@@ -1,17 +1,17 @@
 # hagn2hdf
 by Seyoung Jeon (syj3514@yonsei.ac.kr)  
-The `hagn2hdf` reads Horizon-AGN raw output and converts to HDF5 which is compatible with `SimSpin`.
+The `hagn2hdf` reads Horizon-AGN raw output and converts to HDF5 which is compatible with `SimSpin`.  
 
 ---
 
 ## Preparation
-Install `rur` from https://github.com/sanhancluster/rur
-Also, you should have proper RAMSES output and `GalaxyMaker` data
+Install `rur` from https://github.com/sanhancluster/rur  
+Also, you should have proper RAMSES output and `GalaxyMaker` data  
 
 ---
 
 ## Install
-Download the code from github repository
+Download the code from github repository  
 ```bash
 ~$ git clone
 ```
@@ -60,20 +60,20 @@ base
 |   |   tree_bricks00782
 
 ```
-Following the structure, set `base`, `snaprepo`, `halorepo`, `full_path` properly.
-`ramsesver` indiciates the ramses code version.
-`Horizon-AGN` and `NewHorizon` is `Ra3`, and `NewHorizon2` and `NewCluster` is `Ra4`.
-`Ra3` classifies particles in `part` file using the sign of ID and epoch of particles.
-`Ra4` does it using `family`.
+Following the structure, set `base`, `snaprepo`, `halorepo`, `full_path` properly.  
+`ramsesver` indiciates the ramses code version.  
+`Horizon-AGN` and `NewHorizon` is `Ra3`, and `NewHorizon2` and `NewCluster` is `Ra4`.  
+`Ra3` classifies particles in `part` file using the sign of ID and epoch of particles.  
+`Ra4` does it using `family`.  
 
 ### HAGN to hdf5 params
 See https://kateharborne.github.io/SimSpin/
 
 ### Running params
-The result hdf5 files are saved in `savedir`.
-`verbose` for debugging level.
-`nthread` is used only for fortran mode as `omp_num_threads`.
-If memory usage exceeds `maxGB`, cached data will be deallocated.
+The result hdf5 files are saved in `savedir`.  
+`verbose` for debugging level.  
+`nthread` is used only for fortran mode as `omp_num_threads`.  
+If memory usage exceeds `maxGB`, cached data will be deallocated.  
 
 ---
 
@@ -81,11 +81,11 @@ If memory usage exceeds `maxGB`, cached data will be deallocated.
 ```bash
 ~/hagn2hdf$ python3 HAGN2HDF.py <iout>
 ```
-You can see the log, `hagn2hdf_{iout:03d}.log`, in `savedir`.
+You can see the log, `hagn2hdf_{iout:03d}.log`, in `savedir`.  
 Output file will saved as `{savedir}/{iout:03d}/HAGN_{iout:03d}_MAGPI_{Galaxy_ID:06d}.hdf5`
 
 ---
 
 ## HDF5 format
-See https://kateharborne.github.io/SimSpin/examples/generating_hdf5.html
+See https://kateharborne.github.io/SimSpin/examples/generating_hdf5.html  
 or See `save_hdf` function in `hfunc.py`
