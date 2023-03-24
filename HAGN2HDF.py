@@ -22,7 +22,7 @@ logger = custom_debugger(logname)
 
 # Load galaxy
 snap = uri.RamsesSnapshot(p.base, iout, mode='hagn', box=None, path_in_repo=p.snaprepo, longint=False)
-gals, gpids = uhmi.HaloMaker.load(snap, path_in_repo=p.halorepo, galaxy=True, load_parts=False, double_precision=False, full_path=p.full_path, load_parts=True)
+gals, gpids = uhmi.HaloMaker.load(snap, path_in_repo=p.halorepo, galaxy=True, double_precision=False, full_path=p.full_path, load_parts=True)
 mask = (gals['m'] >= p.minmass) & (gals['m'] <= p.maxmass)
 gals, gpids = uhmi.HaloMaker.cut_table(gals, gpids, mask)
 print(f"Ngal = {len(gals)}, ({np.min(gals['id'])} ~ {np.max(gals['id'])})\nNparts = {len(gpids)}\n")

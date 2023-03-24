@@ -192,7 +192,7 @@ def set_attribute(group:h5py.Dataset, key:str, conversion, unit=None, readme=Non
 ###################################################################
 ###        Main function                                        ###
 ###################################################################
-def save_hdf(snap:uri.RamsesSnapshot, target:np.ndarray, partids:np.ndarray, calc_total:bool=False, maxGB:float=50, logger:logging.Logger=None) -> tuple[float, str]:
+def save_hdf(snap:uri.RamsesSnapshot, target:np.ndarray, partids:np.ndarray, calc_total:bool=False, maxGB:float=50, logger:logging.Logger=None):
     global p, ipy
     ref = time.time()
     fname = f"{p.savedir}/{snap.iout:03d}/HAGN_{snap.iout:03d}_MAGPI_{target['id']:06d}.hdf5"
