@@ -1,5 +1,5 @@
 # hagn2hdf
-by Seyoung Jeon (syj3514@yonsei.ac.kr)
+by Seyoung Jeon (syj3514@yonsei.ac.kr)  
 The `hagn2hdf` reads Horizon-AGN raw output and converts to HDF5 which is compatible with `SimSpin`.
 
 ---
