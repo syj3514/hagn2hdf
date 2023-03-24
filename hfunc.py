@@ -361,8 +361,8 @@ def save_hdf(snap:uri.RamsesSnapshot, target:np.ndarray, partids:np.ndarray, cal
             set_attribute(part4, "Member", 1, unit="None", readme="Membership boolean by GalaxyMaker")
 
         size = (snap.part_data.nbytes+snap.cell_data.nbytes) / 2**30 #GB
-        msg = f" > `{fname}` save done (cache {size:.2f} GB)"
-        if p.verbose>0: timer0.done(msg)
+        msg = f" > `Save (cache {size:.2f} GB)"
+        if p.verbose>0: timer0.done(prefix=msg)
             # if p.verbose==1:
             #     if not ipy:
             #         cleanprint(10)
