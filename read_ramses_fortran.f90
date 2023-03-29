@@ -36,7 +36,7 @@ contains
         file_path = part_filename(repo, iout, cpu_list(1))
 
         ! Step 1: Verify there is file
-        if(verbose>0)write(*,'(a)') '> Check if there is file: '//trim(file_path)
+        if(verbose>1)write(*,'(a)') '> Check if there is file: '//trim(file_path)
         inquire(file=file_path, exist=ok)
         if ( .not. ok ) then
             write(*,'(a)') file_path, ' not found.'
@@ -44,7 +44,7 @@ contains
         endif
 
         ! Step 2: Count the total number of particles.
-        if(verbose>0)write(*,'(a)') '> Check the total number of stars'
+        if(verbose>1)write(*,'(a)') '> Check the total number of stars'
         open(unit=part_n, file=file_path, status='old', form='unformatted')
         read(part_n) ncpu
         read(part_n) ndim
@@ -55,7 +55,7 @@ contains
         close(part_n)
         ncloud = 2109*nsink
 
-        if(verbose>0)write(*,'(a)') '> Check the total number of all particles...'
+        if(verbose>1)write(*,'(a)') '> Check the total number of all particles...'
         npart_tot = 0
         if(verbose>1)write(6, '(a)', advance='no') '>> Progress: '
         !$OMP PARALLEL DO SHARED(npart_tot) PRIVATE(i, icpu, npart, part_n) NUM_THREADS(nthread)
@@ -71,7 +71,7 @@ contains
         end do
         !$OMP END PARALLEL DO
         ndm = npart_tot - nstar - ncloud
-        if(verbose>0)write(*,'(a)') '> Done'
+        if(verbose>1)write(*,'(a)') '> Done'
     end subroutine read_part
 
 
