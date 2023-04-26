@@ -9,8 +9,8 @@ import traceback
 # Read Input
 args = sys.argv
 if len(args)<2:
-    print(f"You should specify iout!:")
-    print(f" $ python3 run_hagn2hdf.py <iout>")
+    print(f"\nYou should specify iout!:")
+    print(f" $ python3 run_hagn2hdf.py <iout>\n")
     raise AssertionError("STOP")
 
 # Make save directory and log file
@@ -27,6 +27,9 @@ mask = (gals['m'] >= p.minmass) & (gals['m'] <= p.maxmass)
 gals, gpids = uhmi.HaloMaker.cut_table(gals, gpids, mask)
 print(f"Ngal = {len(gals)}, ({np.min(gals['id'])} ~ {np.max(gals['id'])})\nNparts = {len(gpids)}\n")
 dprint(f"Ngal = {len(gals)}, ({np.min(gals['id'])} ~ {np.max(gals['id'])})\nNparts = {len(gpids)}\n", logger)
+table = np.vstack((gals['id'], gals['m'], gals['x']*snap.unit_l/p.kpc2cm, gals['y']*snap.unit_l/p.kpc2cm, gals['z']*snap.unit_l/p.kpc2cm)).T
+np.savetxt(f"{p.savedir}/catalogue_{iout:03d}.csv", table, fmt='%d,%e,%e,%e,%e', header='id,m_Msol,x_kpc,y_kpc,z_kpc', comments='#')
+
 nparts = gals['nparts']
 cparts = np.insert( np.cumsum(nparts), 0, 0 )
 
