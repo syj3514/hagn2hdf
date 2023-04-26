@@ -13,7 +13,7 @@ Also, you should have proper RAMSES output and `GalaxyMaker` data
 ## Install
 Download the code from github repository  
 ```bash
-~$ git clone
+~$ git clone https://github.com/syj3514/hagn2hdf.git
 ```
 
 Add path:
